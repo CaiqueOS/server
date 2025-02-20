@@ -9,6 +9,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import { env } from './env'
+import { accessInviteLinkRoute } from './routes/access-invite-link.route'
 import { subscribeToEventRoute } from './routes/subscribe-to-event.route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -38,6 +39,9 @@ app.register(fastifySwaggerUi, {
 
 // Rota para cadastrar inscrições
 app.register(subscribeToEventRoute)
+
+// Rota de acesso ao link de invite
+app.register(accessInviteLinkRoute)
 
 // Quando acessar a rota /hello, vai mostrar 'Hello World'
 app.get('/hello', () => {
