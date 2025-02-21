@@ -17,6 +17,7 @@ export const subscribeToEventRoute: FastifyPluginAsyncZod = async app => {
         body: z.object({
           name: z.string(), // Colocando .optional() ele vai entender que não é obrigatório
           email: z.string().email(),
+          referrer: z.string().nullish(),
         }),
         // Setando o que vai ser mostrado na resposta do status 201
         response: {
@@ -28,12 +29,13 @@ export const subscribeToEventRoute: FastifyPluginAsyncZod = async app => {
     },
     async (request, reply) => {
       //request: Conteúdo da requisição
-      const { name, email } = request.body
+      const { name, email, referrer } = request.body
 
       // Inserindo dados no bd
       const { subscriberId } = await subscribeToEvent({
         name,
         email,
+        referrerId: referrer,
       })
 
       // reply: Resposta

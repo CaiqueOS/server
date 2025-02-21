@@ -8,4 +8,31 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3333/subscriptions
+Content-Type: application/json
+
+{
+    "name": "Usuário Indicado",
+    "email": "indicado@gmail.com",
+    "referrer": "caique123"
+}
+
+###
+
 GET http://localhost:3333/invites/caique123
+
+###
+
+GET http://localhost:3333/subscribers/caique123/ranking/clicks
+
+###
+
+GET http://localhost:3333/subscribers/caique123/ranking/count
+
+###
+
+GET http://localhost:3333/subscribers/caique123/ranking/position
+
+###
+
+GET http://localhost:3333/ranking

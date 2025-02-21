@@ -2,7 +2,6 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
 import { env } from '../env'
 import { accessInviteLink } from '../functions/access-invite-link'
-import { redis } from '../redis/client'
 
 // Cadastrar inscrições
 export const accessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
@@ -21,9 +20,7 @@ export const accessInviteLinkRoute: FastifyPluginAsyncZod = async app => {
         }),
         // Setando o que vai ser mostrado na resposta do status 201
         response: {
-          201: z.object({
-            subscriberId: z.string(),
-          }),
+          302: z.null(),
         },
       },
     },
